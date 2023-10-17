@@ -2,10 +2,9 @@ const express = require("express");
 const mongoose = require("mongoose");
 const ShortUrl = require("./models/shortUrls");
 const app = express();
+require("dotenv").config();
 
-mongoose.connect(
-  "mongodb://divyanshsahu80:divyanshsahu55@ac-8m0uytd-shard-00-00.kzm4poj.mongodb.net:27017,ac-8m0uytd-shard-00-01.kzm4poj.mongodb.net:27017,ac-8m0uytd-shard-00-02.kzm4poj.mongodb.net:27017/?ssl=true&replicaSet=atlas-yh2hw2-shard-0&authSource=admin&retryWrites=true&w=majority"
-);
+mongoose.connect(process.env.MONGO_URL);
 app.set("view engine", "ejs");
 app.use(express.urlencoded({ extended: false }));
 
